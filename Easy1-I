@@ -1,0 +1,84 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+int main()
+{
+    char arr[] = "good morning all.";
+    cout << "Original String:\n"<< arr<< endl;
+    cout<<"String in UPPERCASE:\n";
+    for (int x=0; x<strlen(arr); x++)
+        putchar(toupper(arr[x]));
+    return 0;
+}
+
+
+
+2................................................
+
+#include <iostream>
+#include <cstring>
+
+class CaseConverter {
+private:
+    std::string str;
+
+public:
+    CaseConverter(const std::string& s) : str(s) {}
+
+    void toUpperCase() {
+        for (char &c : str) {
+            c = std::toupper(c);
+        }
+    }
+
+    void toLowerCase() {
+        for (char &c : str) {
+            c = std::tolower(c);
+        }
+    }
+
+    void displayResult() const {
+        std::cout << "Converted string: " << str << std::endl;
+    }
+};
+
+int main() {
+    std::string inputString;
+    char choice;
+
+    std::cout << "Enter a string: ";
+    std::getline(std::cin, inputString);
+
+    CaseConverter caseConverter(inputString);
+ 
+    std::cout << "Choose conversion (U for uppercase, L for lowercase): ";
+    std::cin >> choice;
+ 
+    if (std::toupper(choice) == 'U') {
+        caseConverter.toUpperCase();
+    } else if (std::toupper(choice) == 'L') {
+        caseConverter.toLowerCase();
+    } else {
+        std::cout << "Invalid choice. Please enter U or L." << std::endl;
+        return 1;  
+    }
+ 
+    caseConverter.displayResult();
+
+    return 0;
+}
+
+
+output:
+
+Enter a string: She is Good
+Choose conversion (U for uppercase, L for lowercase): L
+Converted string: she is good
+
+Enter a string: OK!
+Choose conversion (U for uppercase, L for lowercase): L
+Converted string: ok!
+
+Enter a string: 0000.000
+Choose conversion (U for uppercase, L for lowercase): L
+Converted string: 0000.000
